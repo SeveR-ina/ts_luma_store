@@ -20,6 +20,18 @@ npm run cypress:open
 npm run dev:test
 ```
 
+### - to run Docker:
+First of all, docker should be running before executing next commands.
+* to create a Docker image:
+```
+docker build -t ts_luma_store .
+```
+* to run this image:
+```
+docker compose up
+```
+
+
 ## If you are not familiar with Cypress tests, you need to do these steps:
 - clone this project;
 - check your NodeJs version by this command in terminal: 

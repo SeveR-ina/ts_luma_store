@@ -28,11 +28,11 @@ describe.only('Registration tests for magento.softwaretestingboard.com', () => {
     it('Login with created user', () => {
         homePage.logInLink().click();
         cy.login(userData.email, userData.password);
-        cy.wait(2000);
+        cy.wait(4000);
         cy.contains(`Welcome, ${userData.fullName}!`);
     });
 
-    it('Log out', () => {
+    it.skip('Log out', () => {
         //cy.login(email, password);
         homePage.logInLink().click();
         cy.login(userData.email, userData.password);

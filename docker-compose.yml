@@ -1,0 +1,9 @@
+version: '3'
+services:
+  cypress-chrome:
+    image: 'ts_luma_store'
+    command: 'dev:test'
+    volumes:
+      - ./cypress/videos:/ts_luma_store/cypress/videos
+      - ./cypress/results:/ts_luma_store/cypress/results
+      - ./cypress/screenshots:/ts_luma_store/cypress/screenshots

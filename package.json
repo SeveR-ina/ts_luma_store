@@ -4,8 +4,8 @@
   "description": "Example TS+Cypress tests for https://magento.softwaretestingboard.com/",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev:test": "cypress run --browser chrome --headless --spec \"cypress/e2e/**/*.cy.ts\"",
+    "merge":"mochawesome-merge cypress/reports/*.json > index.html",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
