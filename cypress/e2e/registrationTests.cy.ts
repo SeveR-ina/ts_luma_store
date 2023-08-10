@@ -25,11 +25,18 @@ describe.only('Registration tests for magento.softwaretestingboard.com', () => {
         cy.validateUrl('customer/account/');
     });
 
-    it('Login with created user', () => {
+    it('Login with existing user', () => {
         homePage.logInLink().click();
         cy.login(userData.email, userData.password);
-        cy.wait(4000);
+        cy.wait(5000);
         cy.contains(`Welcome, ${userData.fullName}!`);
+    });
+
+    it('Login with non-existent user', () => {
+        homePage.logInLink().click();
+        cy.login(userData.email, userData.fullName);
+        cy.wait(4000);
+        cy.contains(`incorrect or your account is disabled`);
     });
 
     it.skip('Log out', () => {
