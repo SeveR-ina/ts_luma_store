@@ -5,6 +5,7 @@ declare namespace Cypress {
            logOut(): Chainable<any>
            validateUrl(url: any): Chainable<any>
            fillRegisterInfo(firstName: any, lastName: any, email: any, password: any): Chainable<any>
+           fillEmptyRegisterInfo(): Chainable<any>
        }
    }
 //}
