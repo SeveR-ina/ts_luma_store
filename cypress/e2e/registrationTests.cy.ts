@@ -1,8 +1,6 @@
 import { homePage } from "../pages/HomePage";
 import { registrationPage } from "../pages/RegistrationPage";
 import { customerPage } from "../pages/CustomerPage";
-//const { userData } = require("../fixtures/example.json");
-import * as userData from "../fixtures/userData.json";
 const { faker } = require('@faker-js/faker');
 
 describe.only('Registration tests for magento.softwaretestingboard.com', () => {
@@ -25,28 +23,13 @@ describe.only('Registration tests for magento.softwaretestingboard.com', () => {
         cy.validateUrl('customer/account/');
     });
 
-    it('Login with existing user', () => {
-        homePage.logInLink().click();
-        cy.login(userData.email, userData.password);
-        cy.wait(5000);
-        cy.contains(`Welcome, ${userData.fullName}!`);
+    it('User registration with empty fields', () => {
+        homePage.registerLink().first().click();
+        cy.validateUrl('customer/account/create/');
+        cy.fillEmptyRegisterInfo();
+        registrationPage.registerButton().click();
+        cy.wait(2000);
+        cy.scrollTo('bottom');
+        cy.validateUrl('customer/account/create/');
     });
-
-    it('Login with non-existent user', () => {
-        homePage.logInLink().click();
-        cy.login(userData.email, userData.fullName);
-        cy.wait(4000);
-        cy.contains(`incorrect or your account is disabled`);
-    });
-
-    it.skip('Log out', () => {
-        //cy.login(email, password);
-        homePage.logInLink().click();
-        cy.login(userData.email, userData.password);
-        cy.validateUrl('https://magento.softwaretestingboard.com/');
-        cy.logOut();
-        cy.contains('You are signed out');
-        cy.validateUrl('/logoutSuccess/');
-    });
-
 });

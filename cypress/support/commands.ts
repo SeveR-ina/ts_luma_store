@@ -2,7 +2,6 @@
 import { registrationPage } from '../pages/RegistrationPage';
 import { homePage } from '../pages/HomePage';
 import { loginPage } from '../pages/LoginPage';
-import { customerPage } from '../pages/CustomerPage';
 
 Cypress.Commands.add('login' as any, (email: string, password: string) => {
 	loginPage.emailInput().type(email);
@@ -28,6 +27,18 @@ Cypress.Commands.add(
 		registrationPage.emailInput().type(email);
 		registrationPage.passwordInput().type(password);
 		registrationPage.repeatPasswordInput().type(password);
+	}
+);
+
+Cypress.Commands.add(
+	'fillEmptyRegisterInfo' as any,
+	(
+	) => {
+		registrationPage.firstNameInput().type('{backspace}')
+		registrationPage.lastNameInput().type('{backspace}')
+		registrationPage.emailInput().type('{backspace}')
+		registrationPage.passwordInput().type('{backspace}')
+		registrationPage.repeatPasswordInput().type('{backspace}')
 	}
 );
 
